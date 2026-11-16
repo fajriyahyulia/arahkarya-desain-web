@@ -1,0 +1,46 @@
+/* ==========================================================================
+   ArahKarya — responsive.css
+   Penyesuaian per breakpoint Bootstrap: lg 992, md 768, sm 576, 360 px.
+   ========================================================================== */
+
+html, body { max-width: 100%; overflow-x: hidden; }
+img, svg { max-width: 100%; }
+.ak-wrap-anywhere { overflow-wrap: anywhere; }
+
+@media (max-width: 991.98px) {
+  .ak-roadmap { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ak-road-step::after { display: none; }
+  .ak-navbar .offcanvas { max-width: 86vw; }
+  .ak-navbar .offcanvas .nav-link { padding: .8rem 1rem; font-size: 1.02rem; }
+  .ak-hero { border-radius: 20px; }
+}
+
+@media (max-width: 767.98px) {
+  .ak-brand-logo { height: 38px; }
+  .ak-page-head { padding-block: 1.5rem .75rem; }
+  .ak-hero-inner { padding: 1.5rem 1.25rem; }
+  .ak-btn-stack-mobile > .btn { width: 100%; }
+  .ak-sticky-actions { position: sticky; bottom: 0; background: var(--ak-card); padding: .75rem 1rem; margin-inline: -1rem; border-top: 1px solid var(--ak-border); z-index: 5; }
+  .ak-footer { margin-top: 2.5rem; }
+  .nav-tabs { flex-wrap: nowrap; overflow-x: auto; overflow-y: hidden; scrollbar-width: thin; }
+  .nav-tabs .nav-link { white-space: nowrap; }
+  /* Tabel menjadi kartu di mobile */
+  .ak-table-stack thead { display: none; }
+  .ak-table-stack tr { display: block; border: 1px solid var(--ak-border); border-radius: 12px; margin-bottom: .75rem; padding: .5rem .75rem; background: var(--ak-card); }
+  .ak-table-stack td { display: flex; justify-content: space-between; gap: 1rem; border: 0; padding: .35rem 0; }
+  .ak-table-stack td::before { content: attr(data-label); font-weight: 700; color: var(--ak-heading); flex: none; }
+}
+
+@media (max-width: 575.98px) {
+  .ak-roadmap { grid-template-columns: minmax(0, 1fr); }
+  .ak-option label { padding: .85rem .9rem; }
+  .ak-dot { width: 28px; height: 28px; }
+  .modal-dialog { margin: .75rem; }
+  .btn-lg { --bs-btn-padding-x: 1.2rem; }
+  .ak-poster { width: 100%; }
+}
+
+@media (max-width: 374.98px) {
+  .container, .container-fluid { --bs-gutter-x: 1.5rem; }
+  h1, .h1 { font-size: 1.7rem; }
+}

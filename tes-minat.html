@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="id" data-bs-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tes Minat dan Bakat | ArahKarya</title>
+  <meta name="description" content="Tes minat dan bakat 12 pertanyaan dengan perhitungan transparan dari ArahKarya.">
+  <meta name="theme-color" content="#102B5C">
+  <link rel="icon" type="image/png" href="assets/logo/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/components.css" rel="stylesheet">
+  <link href="css/responsive.css" rel="stylesheet">
+  <script>try{if(JSON.parse(localStorage.getItem('arahkarya_theme'))==='dark')document.documentElement.setAttribute('data-bs-theme','dark');}catch(e){}</script>
+</head>
+<body data-page="tes">
+<div id="site-nav"></div>
+<main id="main" tabindex="-1">
+
+<div class="container ak-page-head">
+  <nav aria-label="Breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="index.html">Beranda</a></li><li class="breadcrumb-item active" aria-current="page">Tes Minat</li></ol></nav>
+  <p class="ak-eyebrow mb-1">Langkah 1 · Kenali minat</p>
+  <h1 class="h2 mb-2">Tes Minat & Bakat</h1>
+  <p class="ak-lead mb-0">12 pertanyaan, sekitar 8 menit. Tidak ada jawaban benar atau salah.</p>
+</div>
+<div class="container pb-4">
+  <div class="row g-4">
+    <div class="col-lg-8">
+      <div id="quiz" class="ak-card ak-quiz-card" aria-live="polite">
+        <div class="d-flex justify-content-between align-items-center mb-2 small fw-semibold"><span id="q-indicator">Pertanyaan 1 dari 12</span><span id="q-percent">0%</span></div>
+        <div class="progress mb-3" id="q-progress" role="progressbar" aria-label="Kemajuan tes" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"><div class="progress-bar" id="q-bar" style="width:0%"></div></div>
+        <div class="ak-dots mb-4" id="q-dots" aria-label="Navigasi pertanyaan"></div>
+        <fieldset>
+          <legend class="h4 mb-3" id="q-text"></legend>
+          <div class="d-grid gap-2" id="q-options"></div>
+        </fieldset>
+        <div id="q-warning" class="text-danger small fw-semibold mt-3" role="alert" hidden></div>
+        <div class="d-flex flex-wrap justify-content-between gap-2 mt-4">
+          <button class="btn btn-outline-primary" type="button" id="q-prev"><i class="bi bi-arrow-left me-1" aria-hidden="true"></i>Sebelumnya</button>
+          <div class="d-flex gap-2">
+            <button class="btn btn-outline-primary" type="button" id="q-save"><i class="bi bi-bookmark-check me-1" aria-hidden="true"></i>Simpan sementara</button>
+            <button class="btn btn-primary" type="button" id="q-next">Selanjutnya <i class="bi bi-arrow-right ms-1" aria-hidden="true"></i></button>
+          </div>
+        </div>
+        <p class="small text-muted mt-3 mb-0"><i class="bi bi-check2-circle me-1" aria-hidden="true"></i>Jawabanmu tersimpan otomatis di browser ini, jadi kamu bisa melanjutkan nanti.</p>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <div class="ak-card-soft p-4 mb-3">
+        <h2 class="h5">Yang akan kamu dapat</h2>
+        <ul class="list-unstyled mb-0 d-grid gap-2 small">
+          <li><i class="bi bi-check2-circle text-success me-2" aria-hidden="true"></i>Profil kecenderungan minat</li>
+          <li><i class="bi bi-check2-circle text-success me-2" aria-hidden="true"></i>Rekomendasi jurusan dan karier beserta alasan</li>
+          <li><i class="bi bi-check2-circle text-success me-2" aria-hidden="true"></i>Keterampilan yang menonjol</li>
+          <li><i class="bi bi-check2-circle text-success me-2" aria-hidden="true"></i>Langkah eksplorasi berikutnya</li>
+        </ul>
+      </div>
+      <div class="accordion" id="infoAcc">
+        <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#acc1" aria-expanded="true" aria-controls="acc1">Tujuan tes</button></h2><div id="acc1" class="accordion-collapse collapse show" data-bs-parent="#infoAcc"><div class="accordion-body small">Membantu mengenali aktivitas yang kamu sukai sebagai titik awal eksplorasi. Tes ini <strong>bukan diagnosis psikologis</strong> dan bukan penentu masa depan.</div></div></div>
+        <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#acc2" aria-expanded="false" aria-controls="acc2">Metode penilaian</button></h2><div id="acc2" class="accordion-collapse collapse" data-bs-parent="#infoAcc"><div class="accordion-body small">Enam dimensi minat: Kreatif & Desain, Teknologi & Logika, Bisnis & Strategi, Komunikasi & Konten, Data & Riset, Kesehatan & Sosial. Setiap jawaban memberi 1 poin ke satu dimensi. Persentase dimensi = poin yang kamu kumpulkan dibagi jumlah kesempatan dimensi itu muncul. Kecocokan jurusan dihitung dari kemiripan pola minatmu dengan profil tiap jurusan. <strong>Tidak ada angka acak.</strong></div></div></div>
+        <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#acc3" aria-expanded="false" aria-controls="acc3">Privasi jawaban</button></h2><div id="acc3" class="accordion-collapse collapse" data-bs-parent="#infoAcc"><div class="accordion-body small">Jawaban hanya tersimpan di browser ini (localStorage) dan tidak dikirim ke server. Kamu bisa menghapusnya kapan saja lewat tombol Ulangi tes atau Reset data demo di footer.</div></div></div>
+      </div>
+      <div class="mt-3"><button class="btn btn-sm btn-outline-primary" type="button" id="q-restart"><i class="bi bi-arrow-counterclockwise me-1" aria-hidden="true"></i>Ulangi tes dari awal</button></div>
+    </div>
+  </div>
+</div>
+
+</main>
+<div id="site-footer"></div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+<script src="js/navigation.js"></script>
+<script src="js/test.js"></script>
+</body>
+</html>
