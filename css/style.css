@@ -1,0 +1,204 @@
+/* ==========================================================================
+   ArahKarya — style.css
+   Fondasi: design tokens, tipografi, tombol, navbar, footer, tema gelap.
+   Bootstrap 5.3.8 menjadi dasar; file ini memberi karakter visual ArahKarya.
+   ========================================================================== */
+
+:root {
+  /* Palet resmi */
+  --ak-navy: #102B5C;
+  --ak-blue: #1769AA;
+  --ak-gold: #FFB51B;
+  --ak-white: #FFFFFF;
+  --ak-bg: #F5F7FB;
+  --ak-text: #17243B;
+  --ak-muted: #5B6B82;          /* sedikit lebih gelap dari #64748B agar kontras >= 4.5:1 di atas #F5F7FB */
+  --ak-border: #E5EAF2;
+  --ak-soft: #E8F1FB;           /* turunan biru untuk latar lembut */
+  --ak-gold-soft: #FFF4D6;      /* turunan emas untuk highlight lembut */
+  --ak-success: #047857;
+  --ak-danger: #B42318;
+  --ak-heading: var(--ak-navy);
+  --ak-card: #FFFFFF;
+  --ak-shadow: 0 1px 2px rgba(16, 43, 92, .06), 0 8px 24px rgba(16, 43, 92, .06);
+  --ak-shadow-hover: 0 2px 4px rgba(16, 43, 92, .08), 0 16px 32px rgba(16, 43, 92, .10);
+  --ak-radius-card: 16px;
+  --ak-radius-btn: 10px;
+  --ak-ease: 200ms ease;
+
+  /* Menimpa variabel Bootstrap */
+  --bs-body-font-family: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --bs-body-color: var(--ak-text);
+  --bs-body-bg: var(--ak-bg);
+  --bs-border-color: var(--ak-border);
+  --bs-primary: var(--ak-blue);
+  --bs-primary-rgb: 23, 105, 170;
+  --bs-link-color: var(--ak-blue);
+  --bs-link-color-rgb: 23, 105, 170;
+  --bs-link-hover-color: var(--ak-navy);
+  --bs-secondary-color: var(--ak-muted);
+  --bs-focus-ring-color: rgba(255, 181, 27, .55);
+}
+
+[data-bs-theme="dark"] {
+  --ak-bg: #0B1426;
+  --ak-card: #131E36;
+  --ak-text: #E6EDF8;
+  --ak-muted: #A3B1C9;
+  --ak-border: #27365A;
+  --ak-heading: #D6E4FF;
+  --ak-soft: #17274A;
+  --ak-gold-soft: #3A2F10;
+  --ak-shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 8px 24px rgba(0, 0, 0, .25);
+  --ak-shadow-hover: 0 2px 4px rgba(0, 0, 0, .5), 0 16px 32px rgba(0, 0, 0, .35);
+  --bs-body-color: var(--ak-text);
+  --bs-body-bg: var(--ak-bg);
+  --bs-border-color: var(--ak-border);
+  --bs-link-color: #7DB7F0;
+  --bs-link-color-rgb: 125, 183, 240;
+  --bs-link-hover-color: #FFFFFF;
+  --bs-secondary-color: var(--ak-muted);
+}
+
+/* ---------- Dasar ---------- */
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--bs-body-font-family);
+  font-weight: 400;
+  background: var(--ak-bg);
+  color: var(--ak-text);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+  color: var(--ak-heading);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+h1, .h1 { font-size: clamp(1.9rem, 1.2rem + 2.6vw, 3.1rem); font-weight: 800; }
+h2, .h2 { font-size: clamp(1.5rem, 1.1rem + 1.4vw, 2.1rem); }
+h3, .h3 { font-size: clamp(1.2rem, 1rem + .7vw, 1.5rem); }
+.text-muted, .text-secondary { color: var(--ak-muted) !important; }
+a { transition: color var(--ak-ease); }
+
+.skip-link {
+  position: absolute; left: -999px; top: 8px; z-index: 2000;
+  background: var(--ak-gold); color: var(--ak-navy); font-weight: 700;
+  padding: .6rem 1rem; border-radius: 8px;
+}
+.skip-link:focus { left: 8px; }
+
+:focus-visible {
+  outline: 3px solid var(--ak-gold);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* ---------- Tombol (hover, focus, active, disabled) ---------- */
+.btn {
+  --bs-btn-border-radius: var(--ak-radius-btn);
+  --bs-btn-font-weight: 600;
+  --bs-btn-padding-x: 1.15rem;
+  --bs-btn-padding-y: .6rem;
+  transition: background-color var(--ak-ease), border-color var(--ak-ease), color var(--ak-ease), transform var(--ak-ease), box-shadow var(--ak-ease);
+}
+.btn:active { transform: translateY(1px); }
+.btn:disabled, .btn.disabled { opacity: .55; cursor: not-allowed; }
+.btn-lg { --bs-btn-padding-y: .8rem; --bs-btn-padding-x: 1.6rem; --bs-btn-font-size: 1.05rem; }
+.btn-primary {
+  --bs-btn-bg: var(--ak-blue); --bs-btn-border-color: var(--ak-blue); --bs-btn-color: #fff;
+  --bs-btn-hover-bg: var(--ak-navy); --bs-btn-hover-border-color: var(--ak-navy); --bs-btn-hover-color: #fff;
+  --bs-btn-active-bg: #0B1F45; --bs-btn-active-border-color: #0B1F45; --bs-btn-active-color: #fff;
+  --bs-btn-disabled-bg: var(--ak-blue); --bs-btn-disabled-border-color: var(--ak-blue);
+  --bs-btn-focus-shadow-rgb: 255, 181, 27;
+}
+.btn-gold {
+  --bs-btn-bg: var(--ak-gold); --bs-btn-border-color: var(--ak-gold); --bs-btn-color: var(--ak-navy);
+  --bs-btn-hover-bg: #F0A500; --bs-btn-hover-border-color: #F0A500; --bs-btn-hover-color: var(--ak-navy);
+  --bs-btn-active-bg: #D99400; --bs-btn-active-border-color: #D99400; --bs-btn-active-color: var(--ak-navy);
+  --bs-btn-disabled-bg: var(--ak-gold); --bs-btn-disabled-border-color: var(--ak-gold); --bs-btn-disabled-color: var(--ak-navy);
+  font-weight: 700;
+}
+.btn-outline-primary {
+  --bs-btn-color: var(--ak-blue); --bs-btn-border-color: var(--ak-blue);
+  --bs-btn-hover-bg: var(--ak-blue); --bs-btn-hover-border-color: var(--ak-blue); --bs-btn-hover-color: #fff;
+  --bs-btn-active-bg: var(--ak-navy); --bs-btn-active-border-color: var(--ak-navy);
+  --bs-btn-disabled-color: var(--ak-blue); --bs-btn-disabled-border-color: var(--ak-blue);
+}
+[data-bs-theme="dark"] .btn-outline-primary { --bs-btn-color: #8CC0F5; --bs-btn-border-color: #8CC0F5; --bs-btn-hover-bg: #8CC0F5; --bs-btn-hover-color: #0B1426; }
+.btn-outline-light-ak {
+  --bs-btn-color: #fff; --bs-btn-border-color: rgba(255,255,255,.7);
+  --bs-btn-hover-bg: #fff; --bs-btn-hover-color: var(--ak-navy); --bs-btn-hover-border-color: #fff;
+  --bs-btn-active-bg: #E8F1FB; --bs-btn-active-color: var(--ak-navy);
+}
+
+/* ---------- Navbar ---------- */
+.ak-navbar {
+  background: var(--ak-card);
+  border-bottom: 1px solid var(--ak-border);
+  padding-block: .5rem;
+}
+.ak-navbar .navbar-brand { padding: 0; margin-right: 1.5rem; }
+.ak-brand-logo { height: 44px; width: auto; display: block; border-radius: 8px; }
+[data-bs-theme="dark"] .ak-brand-logo { background: #fff; padding: 2px 8px; }
+.ak-navbar .nav-link {
+  color: var(--ak-muted); font-weight: 600; font-size: .95rem;
+  padding: .55rem .85rem; border-radius: 10px;
+  transition: background-color var(--ak-ease), color var(--ak-ease);
+}
+.ak-navbar .nav-link:hover { color: var(--ak-navy); background: var(--ak-soft); }
+[data-bs-theme="dark"] .ak-navbar .nav-link:hover { color: #fff; }
+.ak-navbar .nav-link.active, .ak-navbar .nav-link[aria-current="page"] {
+  color: var(--ak-navy); background: var(--ak-soft);
+}
+[data-bs-theme="dark"] .ak-navbar .nav-link.active { color: #fff; }
+.ak-navbar .dropdown-menu {
+  border: 1px solid var(--ak-border); border-radius: 12px; box-shadow: var(--ak-shadow-hover);
+  padding: .4rem; background: var(--ak-card);
+}
+.ak-navbar .dropdown-item { border-radius: 8px; font-weight: 500; padding: .5rem .8rem; color: var(--ak-text); }
+.ak-navbar .dropdown-item:hover, .ak-navbar .dropdown-item.active { background: var(--ak-soft); color: var(--ak-navy); }
+[data-bs-theme="dark"] .ak-navbar .dropdown-item:hover { color: #fff; }
+.ak-icon-btn {
+  width: 44px; height: 44px; display: inline-flex; align-items: center; justify-content: center;
+  border: 1px solid var(--ak-border); background: var(--ak-card); color: var(--ak-navy);
+  border-radius: 10px; transition: background-color var(--ak-ease), border-color var(--ak-ease);
+}
+[data-bs-theme="dark"] .ak-icon-btn { color: #D6E4FF; }
+.ak-icon-btn:hover { background: var(--ak-soft); border-color: var(--ak-blue); }
+.ak-navbar .navbar-toggler { border: 1px solid var(--ak-border); width: 44px; height: 44px; padding: 0; border-radius: 10px; }
+.ak-navbar .offcanvas { background: var(--ak-card); }
+
+/* ---------- Footer ---------- */
+.ak-footer { background: var(--ak-navy); color: #DCE7F8; margin-top: 4rem; }
+.ak-footer a { color: #DCE7F8; text-decoration: none; }
+.ak-footer a:hover { color: var(--ak-gold); text-decoration: underline; }
+.ak-footer h2 { color: #fff; font-size: 1rem; font-weight: 700; margin-bottom: .9rem; }
+.ak-footer .ak-footer-logo { background: #fff; padding: 4px 12px; border-radius: 10px; height: 44px; width: auto; }
+.ak-footer .small, .ak-footer small { color: #B9C9E4; }
+.ak-footer hr { border-color: rgba(255,255,255,.18); }
+[data-bs-theme="dark"] .ak-footer { background: #08101F; }
+
+/* ---------- Form ---------- */
+.form-control, .form-select {
+  border-radius: var(--ak-radius-btn); border-color: #CBD5E4; padding: .65rem .9rem;
+  background-color: var(--ak-card); color: var(--ak-text);
+  transition: border-color var(--ak-ease), box-shadow var(--ak-ease);
+}
+[data-bs-theme="dark"] .form-control, [data-bs-theme="dark"] .form-select { border-color: #3A4B73; }
+.form-control:focus, .form-select:focus { border-color: var(--ak-blue); box-shadow: 0 0 0 .25rem rgba(255, 181, 27, .35); background-color: var(--ak-card); color: var(--ak-text); }
+.form-label { font-weight: 600; font-size: .92rem; color: var(--ak-text); }
+.form-text { color: var(--ak-muted); }
+.form-check-input:checked { background-color: var(--ak-blue); border-color: var(--ak-blue); }
+.form-check-input:focus { box-shadow: 0 0 0 .25rem rgba(255, 181, 27, .35); }
+.invalid-feedback { font-weight: 500; }
+
+/* ---------- Animasi ringan ---------- */
+.fade-in-up { animation: akFadeUp 300ms ease both; }
+@keyframes akFadeUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
+}

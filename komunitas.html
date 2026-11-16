@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="id" data-bs-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Konsultasi dan Forum | ArahKarya</title>
+  <meta name="description" content="Forum diskusi, jadwal konsultasi simulasi, dan pertanyaanmu.">
+  <meta name="theme-color" content="#102B5C">
+  <link rel="icon" type="image/png" href="assets/logo/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/components.css" rel="stylesheet">
+  <link href="css/responsive.css" rel="stylesheet">
+  <script>try{if(JSON.parse(localStorage.getItem('arahkarya_theme'))==='dark')document.documentElement.setAttribute('data-bs-theme','dark');}catch(e){}</script>
+</head>
+<body data-page="komunitas">
+<div id="site-nav"></div>
+<main id="main" tabindex="-1">
+
+<div class="container ak-page-head">
+  <nav aria-label="Breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="index.html">Beranda</a></li><li class="breadcrumb-item active" aria-current="page">Komunitas</li></ol></nav>
+  <h1 class="h2 mb-2">Konsultasi & Forum</h1>
+  <p class="ak-lead mb-0">Tanya, belajar dari diskusi, dan rencanakan sesi konsultasi.</p>
+</div>
+<div class="container pb-4">
+  
+  <ul class="nav nav-tabs mb-4" id="comTabs" role="tablist">
+    <li class="nav-item" role="presentation"><button class="nav-link active" id="tab-forum" data-bs-toggle="tab" data-bs-target="#pane-forum" type="button" role="tab" aria-controls="pane-forum" aria-selected="true"><i class="bi bi-chat-square-text me-1" aria-hidden="true"></i>Forum Diskusi</button></li>
+    <li class="nav-item" role="presentation"><button class="nav-link" id="tab-konsultasi" data-bs-toggle="tab" data-bs-target="#pane-konsultasi" type="button" role="tab" aria-controls="pane-konsultasi" aria-selected="false"><i class="bi bi-person-video3 me-1" aria-hidden="true"></i>Konsultasi</button></li>
+    <li class="nav-item" role="presentation"><button class="nav-link" id="tab-pertanyaan" data-bs-toggle="tab" data-bs-target="#pane-pertanyaan" type="button" role="tab" aria-controls="pane-pertanyaan" aria-selected="false"><i class="bi bi-question-circle me-1" aria-hidden="true"></i>Pertanyaanku <span class="badge text-bg-primary ms-1" id="q-count">0</span></button></li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane fade show active" id="pane-forum" role="tabpanel" aria-labelledby="tab-forum" tabindex="0">
+      <form class="ak-card p-3 mb-3" id="forum-filter" role="search" aria-label="Cari diskusi">
+        <div class="row g-3 align-items-end">
+          <div class="col-lg-5"><label for="t-q" class="form-label">Cari diskusi</label><input type="search" class="form-control" id="t-q" placeholder="mis. DKV, magang" autocomplete="off"></div>
+          <div class="col-6 col-lg-3"><label for="t-major" class="form-label">Jurusan</label><select class="form-select" id="t-major"></select></div>
+          <div class="col-6 col-lg-2"><label for="t-ind" class="form-label">Industri</label><select class="form-select" id="t-ind"></select></div>
+          <div class="col-lg-2 d-grid"><button class="btn btn-primary" type="button" id="goto-ask"><i class="bi bi-plus-lg me-1" aria-hidden="true"></i>Ajukan Pertanyaan</button></div>
+        </div>
+      </form>
+      <p class="text-muted" id="t-count" aria-live="polite"></p>
+      <div id="thread-list"></div>
+      <div id="thread-empty" class="ak-empty" hidden><i class="bi bi-chat-square-dots ak-empty-icon" aria-hidden="true"></i><h2 class="h5 mt-3">Tidak ada diskusi yang cocok</h2><p class="text-muted">Coba kata kunci atau filter lain, atau ajukan pertanyaanmu sendiri.</p></div>
+    </div>
+    <div class="tab-pane fade" id="pane-konsultasi" role="tabpanel" aria-labelledby="tab-konsultasi" tabindex="0">
+      <div class="row g-3 mb-4" id="consultant-list"></div>
+      <section class="ak-card p-4" aria-labelledby="mysched-h"><h2 id="mysched-h" class="h5">Jadwal konsultasi simulasi saya</h2><p class="small text-muted">Ini hanya catatan di perangkatmu. Tidak ada sesi yang benar-benar dipesan.</p><div id="my-schedule"></div></section>
+    </div>
+    <div class="tab-pane fade" id="pane-pertanyaan" role="tabpanel" aria-labelledby="tab-pertanyaan" tabindex="0">
+      <div class="row g-4">
+        <div class="col-lg-5">
+          <form class="ak-card p-4" id="ask-form" novalidate>
+            <h2 class="h5 mb-3">Buat pertanyaan</h2>
+            <div class="mb-3"><label for="a-title" class="form-label">Judul pertanyaan</label><input class="form-control" id="a-title" maxlength="100" required><div class="invalid-feedback">Judul wajib diisi (minimal 8 karakter).</div></div>
+            <div class="row g-2 mb-3"><div class="col-6"><label for="a-major" class="form-label">Jurusan</label><select class="form-select" id="a-major"></select></div><div class="col-6"><label for="a-ind" class="form-label">Industri</label><select class="form-select" id="a-ind"></select></div></div>
+            <div class="mb-3"><label for="a-body" class="form-label">Detail</label><textarea class="form-control" id="a-body" rows="4" maxlength="600" required></textarea><div class="invalid-feedback">Jelaskan pertanyaanmu (minimal 15 karakter).</div></div>
+            <button class="btn btn-primary w-100" type="submit">Simpan Pertanyaan</button>
+            <p class="small text-muted mt-3 mb-0">Pertanyaan disimpan di browser ini dan tidak dikirim ke pengguna lain karena belum ada server.</p>
+          </form>
+        </div>
+        <div class="col-lg-7"><h2 class="h5 mb-3">Pertanyaan yang kamu simpan</h2><div id="my-questions"></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</main>
+<div id="site-footer"></div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+<script src="js/navigation.js"></script>
+<script src="js/community.js"></script>
+</body>
+</html>
